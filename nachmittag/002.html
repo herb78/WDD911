@@ -5,17 +5,59 @@
 	<title>002.html</title>
 
 	<style type="text/css" media="screen">
-		.meineKlasse { background-color: green}	
+		.meineKlasse { background-color: green}
+
 	</style>
 	<script type="text/javascript">
 
 		window.onload = function(){
 			// alert('test');
-			console.log('onload');
+			//console.log('onload');
 			h1 = document.getElementById('heading');
 			h1.style.border = "2px solid red";
 
 			h1.className = 'meineKlasse';
+
+			h1.innerHTML = 'Hallo Hallo !';
+
+			//console.log(h1.innerHTML);
+			
+
+			var ptags = document.getElementsByTagName('p');
+
+			var ptag = ptags[0];
+
+			console.log(ptag);
+
+			ptag.onclick = function(){
+				var ptagStyle = ptag.style;
+
+				console.log('unsere \'Farbe\': ' + ptagStyle.backgroundColor);
+
+
+
+				if(ptagStyle.backgroundColor === 'green'){
+					ptagStyle.backgroundColor = 'white'					
+				} else{
+					ptagStyle.backgroundColor = 'green';
+				}
+
+			}
+
+
+			// border-width => borderWidth
+			// background-image => backgroundImage
+
+
+
+
+			// {} = ein objekt
+			// [] = ein Array
+
+			// a['rot','blau', 'grün'];
+			// a[1];
+
+
 		}
 		// alert('alert');
 		console.log('das war mal unser alert-window');
@@ -24,6 +66,14 @@
   <body>
 
 	  <h1 id="heading">heading</h1>
+
+		<p>Da sist unser erster News-Text!</p>
+
+
+
+
+
+
 
   </body>
 </html>
