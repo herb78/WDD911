@@ -2,65 +2,53 @@
 <html lang="de">
 	<head>
 		<title>002.html</title>
-
-
 		<script type="text/javascript">
-
 			window.onload = function(){
-
-
+				// Darstellung und aufruf eines Array / Index
 				//var farben['blau','grün', 'rot'];
-
 				//var meineFarbe = farben[1];
 
-
+				// Alle P-Tags selektieren
 				var pTags = document.getElementsByTagName('p');
-				
+
+				// function an onclick-Event des 1. ptags binden	
 				pTags[0].onclick = function(){
 
 					console.log(this.style.backgroundColor);
 
+					// Shorthand: IF
 					// (vergleich)?anweisung:sonst;
 					// y = (x>=10)?x:(x<0)?x:false;
 					// y = (typeof x == 'String')x:false;
 
+					// Hintergrundfarbe entsprechend setzen
 					if(this.style.backgroundColor !== 'rgb(69, 69, 69)'){
 						this.style.backgroundColor = '#454545';
 					}else{
 						this.style.backgroundColor = 'white';
 					}
-					
 			
 				}
 
-
+				// Bei Klick auf den 2. P-Tag
 				pTags[1].onclick= function (){
-
+					// Usereingabe auf Variable speichern...
 					var userText = prompt('gib einen neuen text ein', this.innerHTML);
-					
+					// ... und in das Element einfügen.
 					this.innerHTML = userText;
-										
 				}
-
-
 				console.log(pTags);
-				
 			}
-
 		</script>
 
 	</head>
 	<body>
-
 		<p>1. Das ist unser erster Absatz!</p>
 		<p>2. Das ist unser erster Absatz!</p>
 		<p>3. Das ist unser erster Absatz!</p>
 		<p>4. Das ist unser erster Absatz!</p>
 		<p>5. Das ist unser erster Absatz!</p>
 		<p>6. Das ist unser erster Absatz!</p>
-
-
-
 	</body>
 </html>
 
