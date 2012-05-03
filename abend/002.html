@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<title>002.html</title>
+
+
+		<script type="text/javascript">
+
+			window.onload = function(){
+
+
+				//var farben['blau','grün', 'rot'];
+
+				//var meineFarbe = farben[1];
+
+
+				var pTags = document.getElementsByTagName('p');
+				
+				pTags[0].onclick = function(){
+
+					console.log(this.style.backgroundColor);
+
+					// (vergleich)?anweisung:sonst;
+					// y = (x>=10)?x:(x<0)?x:false;
+					// y = (typeof x == 'String')x:false;
+
+					if(this.style.backgroundColor !== 'rgb(69, 69, 69)'){
+						this.style.backgroundColor = '#454545';
+					}else{
+						this.style.backgroundColor = 'white';
+					}
+					
+			
+				}
+
+
+				pTags[1].onclick= function (){
+
+					var userText = prompt('gib einen neuen text ein', this.innerHTML);
+					
+					this.innerHTML = userText;
+										
+				}
+
+
+				console.log(pTags);
+				
+			}
+
+		</script>
+
+	</head>
+	<body>
+
+		<p>1. Das ist unser erster Absatz!</p>
+		<p>2. Das ist unser erster Absatz!</p>
+		<p>3. Das ist unser erster Absatz!</p>
+		<p>4. Das ist unser erster Absatz!</p>
+		<p>5. Das ist unser erster Absatz!</p>
+		<p>6. Das ist unser erster Absatz!</p>
+
+
+
+	</body>
+</html>
+
+
