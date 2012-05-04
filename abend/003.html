@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+
+  input {
+  
+  	border: 1px solid red;
+  }
+</style>
+
+<script type="text/javascript">
+
+
+	function wunschcheck(){
+		
+		var wunschFeld = document.getElementById('wunschfeld');
+		var userWunsch = wunschFeld.value;
+
+		wunschFeld.value = '';
+		wunschFeld.focus();
+
+		console.log(userWunsch);
+
+		if(userWunsch !== 'Wunschvorlage' && userWunsch !== '' && userWunsch.indexOf(' ') !== 0){
+			var liste = document.getElementById('wunschliste');
+
+			liste.innerHTML = '<li>' + userWunsch + '</li>' + liste.innerHTML;
+		}
+
+
+		return false;
+	}
+
+</script>
+
+</head>
+<body>
+
+<form id="wunschform" onsubmit="return wunschcheck()" action="javascript:void%200">
+	<input type="text" value="Wunschvorlage" id="wunschfeld" />
+
+	<input type="submit" value="X" />
+</form>
+
+<ul id="wunschliste">
+
+</ul>
+
+
+</body>
+</html>
