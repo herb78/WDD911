@@ -13,21 +13,24 @@
 
 <script type="text/javascript">
 
+	// wunschcheck überprüft ob ein neuer Wunsch eingegeben wurde und speichert disen in eine ul
 	function wunschcheck(){
 		console.log('wunschcheck()');
 
+		// Inhalt(value) aus dem Formularfeld auslesen und Variable userWunsch zuweisen
 		var userWunsch = document.getElementById('wunschfeld').value;
 		console.log(userWunsch);
 
+		// Wenn der eingegeben Wunsch nicht gleich dem Vorgabewunsch ist...
 		if(userWunsch !== 'Vorgabewunsch'){
 			console.log(userWunsch + ' ist valide');
-			
+			// HTML-Tag mit der ID Wunschliste selektieren und auf Variable setzen
 			var wunschListe = document.getElementById('wunschliste');
-
-wunschListe.innerHTML = '<li>'+userWunsch+ '</li>' + wunschListe.innerHTML;
+			// Inhalt der Wunschliste wird mit neuen Wunsch + alten Inhalt befüllt
+			wunschListe.innerHTML = '<li>'+userWunsch+ '</li>' + wunschListe.innerHTML;
 			
 		}
-
+		// return false damit das Formular nicht abgeschickt wird
 		return false;
 	}
 
@@ -37,7 +40,6 @@ wunschListe.innerHTML = '<li>'+userWunsch+ '</li>' + wunschListe.innerHTML;
 <body>
 
 <h1>Wunschliste</h1>
-
 <form onsubmit="return wunschcheck()" action="javascript:void%200" id="wunschform">
 	<input type="text" value="Vorgabewunsch" id="wunschfeld" />	
 <p><input type="submit" value="Continue &rarr;"></p>
