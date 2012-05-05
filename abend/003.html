@@ -11,31 +11,38 @@
   menu, nav, section { display: block; }
 
   input {
-  
   	border: 1px solid red;
   }
 </style>
 
 <script type="text/javascript">
 
-
+	// Holt Wert aus Inputfield, überprüft ob dieser valid ist und fügt den Wert der Wunschliste hinzu.
 	function wunschcheck(){
 		
+		// wunschfeld selektieren
 		var wunschFeld = document.getElementById('wunschfeld');
+		// Inhalt (value) auslesen und Variable zuweisen
 		var userWunsch = wunschFeld.value;
 
+		// Feld zurücksetzen
 		wunschFeld.value = '';
+
+		// Focus in das Feld setzen
 		wunschFeld.focus();
 
 		console.log(userWunsch);
 
+		// Überprüfung ob der Wunsch nicht gleich Wunschvorlage ist, ob überhaupt etwas im Feld steht
+		// und ob das erste Zeichen kein Space ist.
 		if(userWunsch !== 'Wunschvorlage' && userWunsch !== '' && userWunsch.indexOf(' ') !== 0){
-			var liste = document.getElementById('wunschliste');
-
+			// wunschliste selektieren
+			var liste = document.getElementById('wunschliste'); 
+			// neuer Wunsch + alter Inhalt.
 			liste.innerHTML = '<li>' + userWunsch + '</li>' + liste.innerHTML;
 		}
 
-
+		// damit formular nicht abgeschickt wird.
 		return false;
 	}
 
@@ -46,14 +53,10 @@
 
 <form id="wunschform" onsubmit="return wunschcheck()" action="javascript:void%200">
 	<input type="text" value="Wunschvorlage" id="wunschfeld" />
-
 	<input type="submit" value="X" />
 </form>
 
-<ul id="wunschliste">
-
-</ul>
-
+<ul id="wunschliste"></ul>
 
 </body>
 </html>
