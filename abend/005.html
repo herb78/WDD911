@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<script type="text/javascript">
+
+// for(var i= 0; i < 10; i++){
+// 
+// }
+// 
+// i = 10;
+// 
+// check = false;
+// 
+// for(var y=3,x=4 ; i += 10){
+// 
+// 
+// 	if(window){
+// 	
+// 		check = true;
+// 	}
+// 
+// i;
+// }
+
+
+// var i = 10;
+// while(i >= 0){
+//	console.log(i);
+//	i--;
+// }
+
+// var password = '';
+// while(password !== 'geheim'){
+// 	password = prompt('gib das password an');
+// }
+
+
+window.onload= function(){
+
+	// var liTags = document.getElementById('liste').getElementsByTagName('li');
+
+	var liTags = document.querySelector('#liste li:nth-child(2)');
+	console.log(liTags);
+
+	var liTags = document.querySelectorAll('#liste li');
+	console.log(liTags);
+
+
+
+	for(var i = 0; i < liTags.length; i++){
+	
+		liTags[i].style.backgroundColor = 'red';
+
+		liTags[i].onclick = function(){
+			this.innerHTML = prompt('gib den neuen text ein', this.innerHTML);
+		}
+	
+	}
+
+
+
+
+}
+
+
+
+
+
+</script>
+
+</head>
+<body>
+
+<ul id="liste">
+	<li>Item0</li>
+	<li>Item1</li>
+	<li>Item2</li>
+	<li>Item3</li>
+	<li>Item4</li>
+	<li>Item5</li>
+	<li>Item6</li>
+</ul>
+
+
+</body>
+</html>
