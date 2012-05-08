@@ -13,6 +13,10 @@
 
 <script type="text/javascript">
 
+	var letzterWunsch = '';
+
+	var max = 10;
+
 	// wunschcheck überprüft ob ein neuer Wunsch eingegeben wurde und speichert disen in eine ul
 	function wunschcheck(){
 		console.log('wunschcheck()');
@@ -21,18 +25,44 @@
 		var userWunsch = document.getElementById('wunschfeld').value;
 		console.log(userWunsch);
 
+		// letzter Wunsch
+		//var letzterWunsch = 
+		console.log(letzterWunsch + ' (letzter Wunsch)');
+
+		// var anzahlWuensche = document.getElementById('wunschlist')
+		//								.getElementsByTagName('li').length;
+
+		// var letzterWunsch = document.getElementById('wunschlist')
+		//							   .getElementsByTagName('li')[anzahlWuensche-1].innerHTML;
+
+
+		// Überprüfung ob ein Space an erster Stelle steht
+		// if(userWunsch.indexOf(' ') === 0)
+
 		// Wenn der eingegeben Wunsch nicht gleich dem Vorgabewunsch ist...
-		if(userWunsch !== 'Vorgabewunsch'){
-			console.log(userWunsch + ' ist valide');
+		if(userWunsch !== 'Vorgabewunsch' && userWunsch !== '' && letzterWunsch !== userWunsch){
+			console.log(userWunsch + '(userWunsch ist valide)');
 			// HTML-Tag mit der ID Wunschliste selektieren und auf Variable setzen
 			var wunschListe = document.getElementById('wunschliste');
 			// Inhalt der Wunschliste wird mit neuen Wunsch + alten Inhalt befüllt
-			wunschListe.innerHTML = '<li>'+userWunsch+ '</li>' + wunschListe.innerHTML;
+			wunschListe.innerHTML = '<li>' + userWunsch + '</li>' + wunschListe.innerHTML;
+
+			letzterWunsch = userWunsch;
+
+			document.getElementById('wunschfeld').style.border = '1px solid black';
+			document.getElementById('errortext').innerHTML = '';
 			
+		}else{
+		
+			document.getElementById('wunschfeld').style.border = '1px solid red';
+			document.getElementById('errortext').innerHTML = 'heute keine wünsche mehr!';
+
 		}
 		// return false damit das Formular nicht abgeschickt wird
 		return false;
 	}
+
+
 
 </script>
 
@@ -41,7 +71,7 @@
 
 <h1>Wunschliste</h1>
 <form onsubmit="return wunschcheck()" action="javascript:void%200" id="wunschform">
-	<input type="text" value="Vorgabewunsch" id="wunschfeld" />	
+	<input type="text" value="Vorgabewunsch" id="wunschfeld" />	<span id="errortext"></span>
 <p><input type="submit" value="Continue &rarr;"></p>
 </form>
 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+</style>
+
+<script type="text/javascript">
+
+// for(var i = 10; i > 0; i--){
+// 	console.log(i);
+// }
+// 
+// var check = false;
+// 
+// for(; i <= 10; ){
+// 	console.log(check);
+// 	check = true;
+// 	console.log(i);
+// 	console.log(check);
+// 
+// 	i++;
+// }
+
+
+// i = 0;
+// while(i < 10){
+// 	console.log(i);
+// i++;
+// }
+
+
+// var password = '';
+// while(password !== 'gemein' ){
+//  password = prompt('gib das passwort ein', password);
+// }
+
+window.onload= function(){
+
+	// var listItems = document.getElementById('liste').getElementsByTagName('li');
+	// console.log(listItems);
+
+	// gibt ein Element zurück
+	// listItems = document.querySelector('#liste li');
+	// console.log(listItems);
+
+	// liefert ein Array mit allen treffern
+	var listItems = document.querySelectorAll('#liste li');
+	console.log(listItems);
+
+	var anzahlItems = listItems.length;
+	console.log(anzahlItems);
+
+//	for(var i = 0; i <= anzalItems -1; i++)
+
+// listItems[]
+
+// listItems.style.border = '3py solid red'; -> geht leider nicht, da user array kein style object hat
+
+	for(var i = 0; i < anzahlItems; i++){
+		// Zählervariable als Index verwenden um alle Elemente zu durchlaufen (listItems[i]);
+		listItems[i].style.backgroundColor = 'green';
+
+		// Eventhandler auf Elemente legen.
+		listItems[i].onclick = function(){
+			//console.log('click auf html-element');
+
+
+			console.log(this.innerHTML);
+
+
+		}
+	}
+
+
+
+}
+
+
+
+</script>
+
+</head>
+<body>
+
+
+<ul id="liste">
+	<li>Item 1</li>
+	<li>Item 2</li>
+	<li>Item 3</li>
+	<li>Item 4</li>
+	<li>Item 5</li>
+</ul>
+
+
+
+</body>
+</html>
