@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+
+  #hidediv {height: 30px; outline: 1px solid red;}
+
+  #hidediv > div {display: none}
+</style>
+
+<script type="text/javascript">
+
+window.onload = function(){
+
+
+	var hidediv = document.getElementById('hidediv') 
+	
+		hidediv.onmouseover = function(){
+		
+		this.getElementsByTagName('div')[0].style.display = 'block';
+	
+	}
+
+	hidediv.onmouseout= function(){
+		
+		this.getElementsByTagName('div')[0].style.display = 'none';
+	
+	}
+
+}
+
+</script>
+
+</head>
+<body>
+
+
+<div id="hidediv">
+
+	<div>
+
+		INHALT
+
+	</div>
+
+</div>
+
+
+</body>
+</html>
