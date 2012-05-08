@@ -17,6 +17,15 @@
 
 <script type="text/javascript">
 
+
+	function edit(EL){
+		var neuertext = prompt('gib den neuen text an', EL.innerHTML);
+		EL.innerHTML = neuertext;
+	}
+
+	var letzterWunsch = '';
+
+
 	// Holt Wert aus Inputfield, überprüft ob dieser valid ist und fügt den Wert der Wunschliste hinzu.
 	function wunschcheck(){
 		
@@ -33,18 +42,34 @@
 
 		console.log(userWunsch);
 
+
+		// var lastLi = document.getElementById('wunschliste').getElementsByTagName('li');
+		// lastLi = lastLi[lastLi.length -1];
+		// var letzterWunsch = '';
+		// if(typeof lastLi !== 'undefined'){
+		// 	letzterWunsch = lastLi.innerHTML;
+		// }
+
 		// Überprüfung ob der Wunsch nicht gleich Wunschvorlage ist, ob überhaupt etwas im Feld steht
 		// und ob das erste Zeichen kein Space ist.
-		if(userWunsch !== 'Wunschvorlage' && userWunsch !== '' && userWunsch.indexOf(' ') !== 0){
+		if(userWunsch !== 'Wunschvorlage' && userWunsch !== '' && userWunsch.indexOf(' ') !== 0 && letzterWunsch !== userWunsch){
 			// wunschliste selektieren
 			var liste = document.getElementById('wunschliste'); 
 			// neuer Wunsch + alter Inhalt.
-			liste.innerHTML = '<li>' + userWunsch + '</li>' + liste.innerHTML;
+			liste.innerHTML = liste.innerHTML +'<li onclick="edit(this)">' + userWunsch + '</li>';
+
+			letzterWunsch = userWunsch;
+			document.getElementById('errortext').innerHTML = '';
+
+		} else{
+			document.getElementById('errortext').innerHTML = "aus jetzt!";
 		}
 
 		// damit formular nicht abgeschickt wird.
 		return false;
 	}
+
+
 
 </script>
 
@@ -52,11 +77,14 @@
 <body>
 
 <form id="wunschform" onsubmit="return wunschcheck()" action="javascript:void%200">
-	<input type="text" value="Wunschvorlage" id="wunschfeld" />
+	<input type="text" value="Wunschvorlage" id="wunschfeld" /> <span id="errortext"></span>
 	<input type="submit" value="X" />
 </form>
+ 
+<ul id="wunschliste">
 
-<ul id="wunschliste"></ul>
+
+</ul>
 
 </body>
 </html>
