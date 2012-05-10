@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<script type="text/javascript">
+
+function L(message){
+    console.log(message);
+}
+
+
+function $(selector){
+    var elements = document.querySelectorAll(selector);
+    return elements;
+}
+
+function liClick(element){
+    // formularinhalt auslesen
+    var neuerText = $('#newText');
+    neuerText = neuerText[0];
+    neuerText = neuerText.value;
+
+    // check ob eintrag bereits existiert
+    liTags = $('#liste li');
+    for(i = 0; i < liTags.length; i++){
+    
+        if(liTags[i].innerHTML === neuerText){
+            alert('achtung existiert bereits');
+
+            $('#newText')[0].focus();
+            return false;
+        }
+    }
+
+    // user fragen ob er inhalt ersetzen will
+    var wirklichErsetzen = confirm('Wirklich?');
+
+    if(wirklichErsetzen === true){
+        element.innerHTML = neuerText;
+    
+        return true;
+    }else{
+        return false;
+    }
+
+}
+
+
+window.onload = function(){
+
+    var liTags = $('#liste li');
+    L(liTags);
+
+    for(i = 0; i < liTags.length; i++){
+        L( liTags[i] );
+
+        liTags[i].onclick = function(){
+          
+               liClick(this);
+
+
+        }
+    
+    }
+
+
+}
+
+</script>
+
+</head>
+<body>
+
+Neuer text: <input type="text" id="newText" />
+
+<ul id="liste">
+	<li>Item0</li>
+	<li>Item1</li>
+	<li>Item2</li>
+	<li>Item3</li>
+	<li>Item4</li>
+	<li>Item5</li>
+	<li>Item6</li>
+</ul>
+
+
+</body>
+</html>
