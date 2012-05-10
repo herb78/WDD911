@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<style>
+  article, aside, figure, footer, header, hgroup, 
+  menu, nav, section { display: block; }
+</style>
+
+<script type="text/javascript">
+
+function L(message){
+    console.log(message);
+}
+// L(10); L(5); L('fdfdsfdsfds'); L(document);
+
+function $(selector){
+    var elements = document.querySelectorAll(selector);
+    return elements;
+}
+
+function pClick(EL){
+   var newText = $('#newText'); // array mit dem inputfield
+       newText = newText[0]; // input aus array lösen
+       newText = newText.value; // value aus input 
+
+       // confirm liefert uns true/false
+       var userOkAbbrechen = confirm('Text überschreiben?');
+
+       // wenn true wird der eintrag geändert
+       if(userOkAbbrechen === true){
+            EL.innerHTML = newText;
+            return true;
+       }{
+            return false;
+       }
+      // L(newText);
+}
+
+window.onload = function(){
+    //document.querySelectorAll('#wrapper p');
+    var pTags = $('#wrapper p');
+
+    for(var i= 0; i < pTags.length; i++){
+        pTags[i].onclick = function(){
+            var obAenderung = pClick(this);
+
+            if(obAenderung === true){
+                alert('Eintrag bearbeitet');
+            }
+        }
+    
+    }
+
+}
+
+</script>
+
+</head>
+<body>
+
+<header><h1>Meine erste Homepage</h1></header>
+
+Neuer Inhalt<input id="newText" />
+
+
+<div id="wrapper">
+    <p>news</p>
+    <p>news</p>
+    <p>news</p>
+    <p>news</p>
+    <p>news</p>
+    <p>news</p>
+</div>
+
+
+<footer></footer>
+
+</body>
+</html>
