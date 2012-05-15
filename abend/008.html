@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title></title>
+<!--[if IE]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+
+window.onload = function(){
+
+
+    function checkEmail(emailadresse){
+        // console.log(emailadresse);
+
+        return true;
+    }
+
+
+    function checkName(name){
+        // console.log(name);
+
+        return true;
+    }
+
+    document.getElementById('kontaktformular').onsubmit = function(){
+
+        var emailadresse = document.getElementById('email').value,
+            name = document.getElementById('name').value;
+
+            console.log('emailadresse: ' + emailadresse + ' || name: ' + name);
+
+            
+            emailadresse = checkEmail(emailadresse);
+            // Wenn Email OK ist
+            if(emailadresse === true){
+                document.getElementById('email').style.border = '3px solid green';
+            }else {
+                document.getElementById('email').style.border = '3px solid red';
+            }    
+
+
+            name = checkName(name);   
+            // Wenn Name OK ist
+            if(name === true){
+                document.getElementById('name').style.border = '3px solid green';
+            }else {
+                document.getElementById('name').style.border = '3px solid red';
+            } 
+        
+
+        return false;
+    }
+
+}
+
+
+</script>
+
+</head>
+<body>
+
+    <form id="kontaktformular" method="post" action="#">
+
+        <fieldset>
+        
+            <div class="name">
+                <label>Name</label>
+                <input id="name" name="name" />
+                <span class="error"></span>
+            </div>
+        
+            <div class="email">
+                <label>Email</label>
+                <input id="email" name="email" />
+                <span class="error"></span>
+            </div>        
+        
+
+
+            <div>
+                <input type="submit" />
+            </div>
+        </fieldset>
+
+    </form>
+
+</body>
+</html>
