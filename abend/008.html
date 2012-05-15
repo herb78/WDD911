@@ -23,6 +23,27 @@ window.onload = function(){
     function checkName(name){
         // console.log(name);
 
+
+        if(typeof name !== 'string'){
+            return false;
+        }
+
+
+        if(name.length >= 2 && name.length <= 500){
+            return true;    
+        }else{
+            if(name.length === 0){
+                return 'Keine Eingabe!?';
+            }else{
+                if(name.length < 2){
+                    return 'name zu kurz';
+                }else{
+                    return 'name zu lang!';
+                }
+            }
+        }
+
+
         return true;
     }
 
@@ -43,7 +64,9 @@ window.onload = function(){
             }    
 
 
-            name = checkName(name);   
+            name = checkName(name);  
+
+            console.log('checkName() ->>>>>>' + name); 
             // Wenn Name OK ist
             if(name === true){
                 document.getElementById('name').style.border = '3px solid green';
@@ -63,7 +86,7 @@ window.onload = function(){
 </head>
 <body>
 
-    <form id="kontaktformular" method="post" action="#">
+    <form id="kontaktformular" method="post" action="javascript:void%200">
 
         <fieldset>
         
