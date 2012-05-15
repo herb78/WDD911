@@ -16,6 +16,33 @@ window.onload = function(){
     function checkEmail(emailadresse){
         // console.log(emailadresse);
 
+        // Überprüfung ob @ vorhanden
+        var at = emailadresse.indexOf('@');
+
+        console.log('position des @-Zeichens' + at);
+        if(at === -1) return 'Wo ist das @-Zeichen?';
+
+        // Mehrere @-Zeichen?
+
+        // Adresse wird geteilt
+        var emailSplit = emailadresse.split('@');
+
+        // WEnn mehr als 2 Teile -> zu viele @-Zeichen
+        if(emailSplit.length > 2) return 'Zu viele @-Zeichen!';
+
+        // Emailbenutzer gültig?
+        if(emailSplit[0].length < 1) return 'Emailuser zu kurz';
+
+        // letzten Punkt der Emailadresse ermitteln
+        var lastPoint = emailSplit[1].lastIndexOf('.');
+
+        // ob domainname gültig
+        if(emailSplit[1].slice(0, lastPoint).length < 2) return 'Domainname ungültig';
+
+        // ob domain ungültig
+        if(emailSplit[1].slice(lastPoint+1).length < 2) return 'Domain ungültig';
+
+
         return true;
     }
 
@@ -56,6 +83,7 @@ window.onload = function(){
 
             
             emailadresse = checkEmail(emailadresse);
+            console.log(emailadresse);
             // Wenn Email OK ist
             if(emailadresse === true){
                 document.getElementById('email').style.border = '3px solid green';
