@@ -13,28 +13,119 @@
 
 <script type="text/javascript">
 
+    function emailCheck(emailadresse){
+        console.log(emailadresse);
 
+        if(typeof emailadresse !== 'string') return false;
+
+        // haben wir ein @-zeichen?
+        var at = emailadresse.indexOf('@');
+        if(at === -1) return 'Kein @-Zeichen enthalten';
+
+        if(emailadresse.indexOf(' ') !== -1) return 'Welche Email-Adresse enthält Leerzeichen?'
+
+        if(emailadresse.indexOf('@', at+1) !== -1) return 'Nur ein @-Zeichen erlaubt!';
+        
+        var emailSplit = emailadresse.split('@');
+
+        if(emailSplit[0].length < 1) return 'Der Username ist ungültig';
+
+        var domainPointPosition = emailSplit[1].lastIndexOf('.');
+
+        if(domainPointPosition === -1) return 'Keine Domain-Endung';
+
+        var domain =  emailSplit[1].slice(domainPointPosition +1);
+        
+        if(domain.length < 2) return 'Domain ungültig'
+
+        var domainname = emailSplit[1].slice(0, domainPointPosition);
+
+        if(domainname.length < 2) return 'Domain ungültig';
+
+        return true;
+    }
+
+    function nameCheck(name){
+        console.log(name);
+
+        // Wenn kein String übergeben wurde
+        if(typeof name !== 'string'){
+            return false;
+        }
+
+        // Wenn 2 Zeichen oder mehr eingegeben wurden
+        if(name.length >= 2){
+            return true;
+        } else {
+            // Wenn nichts eingegeben wurde
+            if(name.length === 0){
+                return 'Kein Name angegeben';
+            } else {   
+                return 'Eingabe zu kurz';
+            }
+        }
+    }
+
+
+    window.onload= function(){
+        // wenn Formular abgeschickt wird
+        document.getElementById('kontakt').onsubmit = function(){
+            console.log('Formular wurde abgeschickt!');
+            var formular = document.getElementById('kontakt');
+
+            // Inhalte der Formularfelder holen
+            var email = document.getElementById('email').value;
+            var name =  document.getElementById('name').value;
+
+            console.log('email:' + email + ' | name:' + name);
+
+            email = emailCheck(email);
+            console.log('emailCheck() :' + email);
+
+
+            // nameCheck() aufrufen und Rückgabe auf Variable sichern
+            name = nameCheck(name);
+
+            // Wenn rückgabe == true wird der Border grün gefärbt
+            if(name === true){
+                document.getElementById('name').style.border = '1px solid green';
+                document.querySelector('div.name span.error').innerHTML = '';
+            }else{
+                 document.getElementById('name').style.border = '1px solid red';
+                 document.querySelector('div.name span.error').innerHTML = name;
+            }
+
+        }
+    }
 </script>
-
 </head>
 <body>
+<form id="kontakt" action="javascript:void%200">
 
-<header><h1>Meine erste Homepage</h1></header>
+    <fieldset>
 
-Neuer Inhalt<input id="newText" />
-
-
-<div id="wrapper">
-    <p>news</p>
-    <p>news</p>
-    <p>news</p>
-    <p>news</p>
-    <p>news</p>
-    <p>news</p>
-</div>
+        <div class="name">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+            <span class="error"></span>
+        </div> 
 
 
-<footer></footer>
+        <div class="email">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" />
+            <span class="error"></span>
+            
+        </div> 
+    
+        <div>
+            <input type="submit" />
+        </div>
+    
+    </fieldset>
+
+</form>
+
 
 </body>
 </html>
