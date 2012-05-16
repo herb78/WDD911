@@ -21,10 +21,46 @@
       }
     </style>
     
-    <script type="text/javascript" charset="utf-8">    
-   
-    </script>
+    <script type="text/javascript" charset="utf-8">  
+
+    var images = ['_MG_3664.JPG', '_MG_6226.JPG', '_MG_6337.JPG',   '_MG_6878.JPG'];
+
+
+    var currentImage = 0;
+
+    function changePic(richtung){
     
+        var show = document.getElementById('show');
+    
+        currentImage += richtung;
+
+        if(currentImage >= images.length){
+            currentImage = 0;
+        }
+
+        show.src = 'images/'+ images[currentImage]; 
+
+
+        var height = show.clientHeight;
+        var width = show.clientWidth;
+
+
+        console.log('height' + height + 'width' + width);
+    }
+
+    window.onload = function(){
+        
+        // Bilder vorladen;
+        var img;
+        for(var i = 0; i < images.length; i++){
+            img = new Image();
+            img.src = 'images/' + images[i];
+        }
+
+        changePic(0);
+    }
+   
+    </script>    
   </head>
   <body>
     
@@ -33,8 +69,8 @@
       <p style="text-align:right">0 von 0</p>
       <div style="position:relative">
         
-         <a id="left" href="">&lt;</a>
-         <a id="right" href="">&gt;</a>
+         <a id="left" href="" onclick="changePic(-1); return false;" >&lt;</a>
+         <a id="right"href="" onclick="changePic(1); return false;" >&gt;</a>
       
       
       
