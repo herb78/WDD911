@@ -19,8 +19,10 @@ window.onload = function(){
         // Überprüfung ob @ vorhanden
         var at = emailadresse.indexOf('@');
 
+        var fehlermeldungen = '';
+
         console.log('position des @-Zeichens' + at);
-        if(at === -1) return 'Wo ist das @-Zeichen?';
+        if(at === -1) fehlermeldungen += 'Wo ist das @-Zeichen?';
 
         // Mehrere @-Zeichen?
 
@@ -28,22 +30,34 @@ window.onload = function(){
         var emailSplit = emailadresse.split('@');
 
         // WEnn mehr als 2 Teile -> zu viele @-Zeichen
-        if(emailSplit.length > 2) return 'Zu viele @-Zeichen!';
+        if(emailSplit.length > 2) fehlermeldungen += 'Zu viele @-Zeichen!';
 
         // Emailbenutzer gültig?
-        if(emailSplit[0].length < 1) return 'Emailuser zu kurz';
+        if(emailSplit[0].length < 1) fehlermeldungen = fehlermeldungen + 'Emailuser zu kurz';
 
-        // letzten Punkt der Emailadresse ermitteln
-        var lastPoint = emailSplit[1].lastIndexOf('.');
+        if(typeof emailSplit[1] !== 'undefined'){
+            // letzten Punkt der Emailadresse ermitteln
+            var lastPoint = emailSplit[1].lastIndexOf('.');
 
-        // ob domainname gültig
-        if(emailSplit[1].slice(0, lastPoint).length < 2) return 'Domainname ungültig';
+            // gibt es einen Punkt
+            if(lastPoint == -1) fehlermeldungen += 'Kein Punkt, du hast keine Domainendung angegeben';
 
-        // ob domain ungültig
-        if(emailSplit[1].slice(lastPoint+1).length < 2) return 'Domain ungültig';
+            // ob domainname gültig
+            if(emailSplit[1].slice(0, lastPoint).length < 2) fehlermeldungen+= 'Domainname ungültig';
 
+            // ob domain ungültig
+            if(emailSplit[1].slice(lastPoint+1).length < 2) fehlermeldungen+= 'Domain ungültig';
 
-        return true;
+        }
+
+        if(fehlermeldungen == ''){
+            return true
+        } else{
+        
+            return fehlermeldungen;
+        }
+
+       
     }
 
 
