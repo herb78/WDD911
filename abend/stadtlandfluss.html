@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="">
+
+
+  <style>
+#buchstaben .buchstabe {float:left; padding:10px; border:1px solid silver; margin:5px;}
+  
+  </style>
+
+
+  <script type="text/javascript" >
+    
+    window.onload = function(){
+
+  
+          // Verfügbare Buchstaben
+      var buchstaben = ['A', 'B','C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+      var liste = document.getElementById('buchstaben');
+
+      // Checkboxen generieren
+      for(var i = 0; i < buchstaben.length; i++){
+
+          console.log(i);
+         
+
+         
+          liste.innerHTML += '<div class="buchstabe" data-ingame="true" id="buchstabe-' + buchstaben[i] + '"> ' +  buchstaben[i] + '</div>';
+
+      }
+
+
+      // liste durchlaufen und eventhandler setzen
+
+       var buchstabenHTML = document.getElementById('buchstaben').getElementsByTagName('div');
+
+       for(var i= 0; i < buchstabenHTML.length; i++){
+           buchstabenHTML[i].onclick = function(){
+
+               var show = this.getAttribute('data-ingame');
+
+               if(show === 'true'){
+               
+                    this.setAttribute('data-ingame', 'false', 0);
+                    this.style.backgroundColor = 'red';
+               }else{
+                    this.setAttribute('data-ingame', 'true', 0);
+                    this.style.backgroundColor = 'white';
+               }
+
+               
+
+               
+           
+           }
+       
+       }
+
+    
+      document.getElementById('go').onclick = function(){
+         var buchstabenHTML = document.getElementById('buchstaben').getElementsByTagName('div');
+         var buchstaben = [];
+        for(var i= 0; i < buchstabenHTML.length; i++){
+            
+            var show = buchstabenHTML[i].getAttribute('data-ingame');
+            
+            if(show === 'true'){
+                buchstaben.push(buchstabenHTML[i].innerHTML);
+            }
+
+
+        }
+
+        var zufall = parseInt(Math.random()*(buchstaben.length));
+
+        console.log(zufall);
+        var buchstabe = buchstaben[zufall];
+
+        document.getElementById('result').innerHTML = buchstabe;
+        
+      
+      }
+
+
+    }
+  
+  </script>
+</head>
+<body>
+  <header>
+
+  </header>
+  <div role="main">
+      <h1>Stadt Land Fluss</h1>  
+      <div id="buchstaben">
+      
+      </div>
+
+      <div style="clear:both"></div>
+
+
+      <a id="go" href="#">GO !</a>
+
+      <div id="result"></div>
+
+
+  </div>
+  <footer>
+
+  </footer>
+
+</body>
+</html>
+
