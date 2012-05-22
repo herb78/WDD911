@@ -81,6 +81,8 @@
     }
 
     console.log(warenkorb);
+
+    generiereWarenkorb();
               
   } 
   
@@ -100,15 +102,26 @@
 
 
   function generiereWarenkorb(){
-    // variable ausgabe deklarieren -> wird innerhalb der for-schleife befüllt
-    var ausgabe = '<tr><th>Produkt</th><th>Stück</th><th>Optionen</th></tr>';
-                  
-      zeile = "<tr><td>" + "</td><td>" + "</td><td>"
+
+      var ausgabe = '<tr><th>Produkt</th><th>Stück</th><th>Optionen</th></tr>';
+      
+    
+      for(var i = 0; i < warenkorb.length; i++){
+
+        ausgabe += "<tr><td>" + warenkorb[i][0]
+              + "</td><td>" + warenkorb[i][1] + "</td><td>"
               +'<img src="img/icons/bullet_toggle_plus.png" onclick="plusArtikel(\'' + '\');generiereWarenkorb()" />'
               +'<img src="img/icons/bullet_toggle_minus.png" />'
               +'<img src="img/icons/bullet_delete.png" />'
               + "</td><tr>";
+      }
+      
+      // ausgabe in table einfügen
 
+
+      document.getElementById('warenkorb')
+              .getElementsByTagName('table')[0]
+              .innerHTML = ausgabe;
   }
 
   // nachdem das Dokument vollständig geladen wurde
