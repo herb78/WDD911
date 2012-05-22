@@ -77,8 +77,7 @@
             
               produktname = produkte[i].getElementsByTagName('span')[0].innerHTML;
 
-              // Produkt dem Warenkorb hinzufügen
-              warenkorb.push( Array(produktname, 1) );
+                plusArtikel(produktname);
 
               //console.log(produkte[i].getElementsByTagName('span')[0].innerHTML);
           
@@ -92,8 +91,25 @@
   } 
   
   
-  function plusArtikel(artikel){
+  function plusArtikel(produktname){
+    var neu = true;
 
+    // Warenkorb durchlaufen
+    for(var i = 0; i < warenkorb.length; i++){
+
+        // Überprüfung ob Artikel bereits im Warenkorb liegt
+        if(warenkorb[i][0] == produktname){
+            neu = false;
+            // Stückzahl erhöhen
+            warenkorb[i][1]++;
+        }
+
+    }
+
+    if(neu === true){
+        // Produkt dem Warenkorb hinzufügen
+        warenkorb.push( Array(produktname, 1) );
+    }
   } 
 
 
@@ -115,7 +131,8 @@
     for(var i = 0; i < warenkorb.length; i++){
 
       ausgabe += "<tr><td>" + warenkorb[i][0]+ "</td><td>" + warenkorb[i][1] + "</td><td>"
-              +'<img src="img/icons/bullet_toggle_plus.png" onclick="plusArtikel(\'' + '\');generiereWarenkorb()" />'
+              +'<img src="img/icons/bullet_toggle_plus.png" onclick="plusArtikel(\''
+              + warenkorb[i][0] + '\');generiereWarenkorb()" />'
               +'<img src="img/icons/bullet_toggle_minus.png" />'
               +'<img src="img/icons/bullet_delete.png" />'
               + "</td><tr>";
