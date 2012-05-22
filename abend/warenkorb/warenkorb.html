@@ -64,11 +64,13 @@
     
     var produkte = document.querySelectorAll('#produkte li.produkt');
     
+    
     // produkte durchlaufen
     for(var i = 0; i < produkte.length; i++){
+        
         // check ob produkt markiert wurde
         if(produkte[i].style.backgroundColor == 'rgb(160, 160, 160)'){
-    
+               
             // Produktname sichern
             produktName = produkte[i].getElementsByTagName('span')[0].innerHTML;
 
