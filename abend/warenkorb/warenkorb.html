@@ -74,8 +74,8 @@
             // Produktname sichern
             produktName = produkte[i].getElementsByTagName('span')[0].innerHTML;
 
-            // Produkt dem warenkorb hizufügen
-            warenkorb.push( [produktName, 1] );
+            // fügt den artikel hinzu oder erhöht die stückzahl
+            plusArtikel(produktName);
 
         }
     }
@@ -88,6 +88,28 @@
   
   
   function plusArtikel(artikel){
+
+      var neu = true;
+
+      // warenkorb durchlaufen
+      for(var i = 0; i < warenkorb.length ; i++){
+        // ist produkt vorhanden?
+        if(warenkorb[i][0] == artikel){
+            
+            // Stückzahl erhöhen
+            warenkorb[i][1] ++;
+
+            // auf false setzen da artikel bereits existiert
+            neu = false;
+        }
+
+      }
+
+      // Wenn es ein neuer artikel ist dann
+      if(neu === true){
+        // Produkt dem warenkorb hinzufügen
+        warenkorb.push( [produktName, 1] );
+     }
 
   } 
 
@@ -110,7 +132,7 @@
 
         ausgabe += "<tr><td>" + warenkorb[i][0]
               + "</td><td>" + warenkorb[i][1] + "</td><td>"
-              +'<img src="img/icons/bullet_toggle_plus.png" onclick="plusArtikel(\'' + '\');generiereWarenkorb()" />'
+              +'<img src="img/icons/bullet_toggle_plus.png" onclick="plusArtikel(\''+ warenkorb[i][0] + '\');generiereWarenkorb()" />'
               +'<img src="img/icons/bullet_toggle_minus.png" />'
               +'<img src="img/icons/bullet_delete.png" />'
               + "</td><tr>";
