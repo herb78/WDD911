@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Warenkorb</title>
+  
+  <style type="text/css" media="screen">
+
+  body        {font-family:verdana; }
+
+  #produkte   { width:450px; float:left; list-style:none; margin:20px 60px 0 0;}
+  #produkte li.produkt  {position:relative;height:60px; margin:10px 0 10px 10px; padding:0px; border:1px solid #acacac;}
+  #produkte li.zumwarenkorb{text-align:right;}
+  #produkte li img{margin:0px; padding:0px;border-right:1px solid #acacac;}
+  #produkte li span{position:absolute;}
+  table{text-align:center;width:100%;}
+  #warenkorb{margin-top:67px;width:450px; height:345px;float:left;border:1px solid #acacac;}
+
+  </style>
+
+  <script type="text/javascript" charset="utf-8">
+  
+  // warenkorb Array() erstellen
+  var warenkorb = new Array();
+  
+  // Beispiel für Einträge in den Warenkorb: 1x Samsung und 3x HTC enthalten würde
+  /*
+  warenkorb[0] = new Array();
+    warenkorb[0][0] = 'Samsung Galaxy S i9000 8GB';
+    warenkorb[0][1] = '1';
+    
+  warenkorb[1] = new Array();
+    warenkorb[1][0] = 'HTC Desire HD';
+    warenkorb[1][1] = '3':
+    
+  */
+      
+  function onClickProduktListe(){
+        // läuft so lange, bis alle li-Elemente einen onclick - Event-Handler bekommen haben-
+    for(var i = 0;i <= produkte.length-1;i++){
+      // überprüfung ob LI-Element die Klasse produkt hat
+      if(produkte[i].className == 'produkt'){
+        // onclick auf li.element legen
+        produkte[i].onclick = function(){
+          // Wenn das Element bereits rot eingefärbt ist...
+          if(this.style.backgroundColor == 'rgb(161, 161, 161)'){
+            // ... dann bekommt es wieder einen weissen hintergrund
+            this.style.backgroundColor = 'white';
+          }else{
+            // ... andernfalls wird der Hindergrund auf rot gesetzt.
+            this.style.backgroundColor = 'rgb(161, 161, 161)';
+          } // ENDE else
+        } // ENDE onclick
+      } // ENDE if
+    } // ENDE for
+  } // ENDE onClickProduktListe()
+  
+
+  function schriftInListePositionieren(){
+    // I-Elemente durchlaufen
+    for(var i = 0;i <= produkte.length-1;i++){
+      // überprüfung ob LI-Element die Klasse produkt hat
+      if(produkte[i].className == 'produkt'){
+        // höhe des Produktbildes speichern
+        hoeheimg = produkte[i].getElementsByTagName('img')[0].clientHeight;
+        // positionierung von oben berechnen
+        newtop = (hoeheimg - produkte[i].getElementsByTagName('span')[0].clientHeight)/2;
+        // span positionieren
+        produkte[i].getElementsByTagName('span')[0].style.top = newtop + 'px';
+  
+      }// ENDE if
+    }// ENDE for
+  }// ENDE  schriftInListePositionieren();
+  
+  function produkteHinzufuegen(){
+      // Produkte durchlaufen
+      for(var i = 0; i <= produkte.length-1;i++){	
+        // überprüfen ob die hintergrunfarbe rgb(161, 161, 161) ist	
+        if(produkte[i].style.backgroundColor == 'rgb(161, 161, 161)'){
+          plusArtikel(produkte[i].getElementsByTagName('span')[0].innerHTML);
+        } // ENDE if
+      } // ENDE for
+      //nachdem Array aktualisiert wurde wird die anzeige im Warenkorb aktualisiert
+      generiereWarenkorb();
+  } // ENDE produkteHinzufuegen()
+  
+  
+  function plusArtikel(artikel){
+    var neu = true;
+    // warenkorb durchlaufen um zu überprüfen ob der eintrag bereits besteht
+    for(var i = 0; i < warenkorb.length;i++){
+      // überprüfung ob artikel schon im warenkorb liegt
+      if(warenkorb[i][0] == artikel){
+        // wenn ja dan erhöhe die anzahl um 1
+        warenkorb[i][1] ++;
+        // hilfsvariable auf false setzen da eintrag schon besteht
+        neu = false;
+      } // ENDE if
+      
+    } // Ende fors
+    // überprüfung ob es sich um einen neuen eintrag handelt
+    if(neu == true){
+      // Produkt hinzufügen mit push()
+      warenkorb.push( Array(artikel,1) );
+    } // ENDE if
+  } // ENDE addArtikel()
+
+
+  function minusArtikel(){
+
+  }
+  
+  function deleteArtikel(){
+
+  }
+
+
+
+  function generiereWarenkorb(){
+    // variable ausgabe deklarieren -> wird innerhalb der for-schleife befüllt
+    var ausgabe = '<tr><th>Produkt</th><th>Stück</th><th>Optionen</th></tr>';
+                  
+    // forschleife um array warenkorb zu durchlaufen
+    for(var i = 0; i < warenkorb.length;i++){
+      zeile = "<tr><td>"+ warenkorb[i][0] + "</td><td>"+warenkorb[i][1]+"</td><td>"
+              +'<img src="img/icons/bullet_toggle_plus.png" onclick="plusArtikel(\''+ warenkorb[i][0] + '\');generiereWarenkorb()" />'
+              +'<img src="img/icons/bullet_toggle_minus.png" />'
+              +'<img src="img/icons/bullet_delete.png" />'
+              + "</td><tr>";
+      ausgabe += zeile;
+    }
+    
+    document.getElementById('warenkorb').getElementsByTagName('table')[0].innerHTML = ausgabe;
+    
+    
+
+  }
+
+  // nachdem das Dokument vollständig geladen wurde
+  onload = function(){
+      // ALLE li - Elemente
+    produkte = document.getElementById('produkte').getElementsByTagName('li');
+    
+    // Funktion onClickProduktListe() aufrufen um die onCLick Events auf die LI-Elemente zu legen
+    onClickProduktListe();
+    // Schrift in der Artikelliste relativ positionieren (vertikales zentrieren)
+    schriftInListePositionieren();
+  }
+
+  </script>
+</head>
+<body>
+
+	<ul id="produkte">
+    <li class="zumwarenkorb"><img onclick="produkteHinzufuegen()" src="img/icons/cart_go.png" /></li>
+		<li class="produkt"><img src="img/produkte/samsung.png" /><span>Samsung Galaxy S i9000 8GB</span></li>
+		<li class="produkt"><img src="img/produkte/htc.png" /><span>HTC Desire HD</span></li>
+		<li class="produkt"><img src="img/produkte/iphone4.png" /><span>Apple iPhone 4 16GB schwarz</span></li>
+		<li class="produkt"><img src="img/produkte/n8.png" /><span>Nokia N8 dark grey/black</span></li>
+		<li class="produkt"><img src="img/produkte/htc.png" /><span>HTC Wildfire</span></li>		
+    <li class="zumwarenkorb"><img onclick="produkteHinzufuegen()" src="img/icons/cart_go.png" /></li>
+	</ul>
+	
+	<div id="warenkorb">
+	 <table>
+	   
+	 </table>
+	</div>
+</body>
+</html>

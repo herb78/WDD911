@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Warenkorb</title>
+  
+  <style type="text/css" media="screen">
+
+  body        {font-family:verdana; }
+
+  #produkte   { width:450px; float:left; list-style:none; margin:20px 60px 0 0;}
+  #produkte li.produkt  {position:relative;height:60px; margin:10px 0 10px 10px; padding:0px; border:1px solid #acacac;}
+  #produkte li.zumwarenkorb{text-align:right;}
+  #produkte li img{margin:0px; padding:0px;border-right:1px solid #acacac;}
+  #produkte li span{position:absolute;}
+  table{text-align:center;width:100%;}
+  #warenkorb{margin-top:67px;width:450px; height:345px;float:left;border:1px solid #acacac;}
+
+  </style>
+
+  <script type="text/javascript" charset="utf-8">
+  
+  // warenkorb Array() erstellen
+  var warenkorb = new Array();
+  
+  // Beispiel für Einträge in den Warenkorb: 1x Samsung und 3x HTC enthalten würde
+  /*
+  warenkorb[0] = new Array();
+    warenkorb[0][0] = 'Samsung Galaxy S i9000 8GB';
+    warenkorb[0][1] = '1';
+    
+  warenkorb[1] = new Array();
+    warenkorb[1][0] = 'HTC Desire HD';
+    warenkorb[1][1] = '3':
+    
+  */
+      
+  function onClickProduktListe(){
+
+  } 
+  
+
+
+  
+  function produkteHinzufuegen(){
+
+  } 
+  
+  
+  function plusArtikel(artikel){
+
+  } 
+
+
+  function minusArtikel(){
+
+  }
+  
+  function deleteArtikel(){
+
+  }
+
+
+  function generiereWarenkorb(){
+    // variable ausgabe deklarieren -> wird innerhalb der for-schleife befüllt
+    var ausgabe = '<tr><th>Produkt</th><th>Stück</th><th>Optionen</th></tr>';
+                  
+      zeile = "<tr><td>" + "</td><td>" + "</td><td>"
+              +'<img src="img/icons/bullet_toggle_plus.png" onclick="plusArtikel(\'' + '\');generiereWarenkorb()" />'
+              +'<img src="img/icons/bullet_toggle_minus.png" />'
+              +'<img src="img/icons/bullet_delete.png" />'
+              + "</td><tr>";
+
+  }
+
+  // nachdem das Dokument vollständig geladen wurde
+  onload = function(){
+
+    onClickProduktListe();
+
+  }
+
+  </script>
+</head>
+<body>
+
+	<ul id="produkte">
+    <li class="zumwarenkorb"><img onclick="produkteHinzufuegen()" src="img/icons/cart_go.png" /></li>
+		<li class="produkt"><img src="img/produkte/samsung.png" /><span>Samsung Galaxy S i9000 8GB</span></li>
+		<li class="produkt"><img src="img/produkte/htc.png" /><span>HTC Desire HD</span></li>
+		<li class="produkt"><img src="img/produkte/iphone4.png" /><span>Apple iPhone 9 16GB schwarz</span></li>
+		<li class="produkt"><img src="img/produkte/n8.png" /><span>Nokia N8 dark grey/black</span></li>
+		<li class="produkt"><img src="img/produkte/htc.png" /><span>HTC Wildfire</span></li>		
+    <li class="zumwarenkorb"><img onclick="produkteHinzufuegen()" src="img/icons/cart_go.png" /></li>
+	</ul>
+	
+	<div id="warenkorb">
+	 <table>
+	   
+	 </table>
+	</div>
+</body>
+</html>
