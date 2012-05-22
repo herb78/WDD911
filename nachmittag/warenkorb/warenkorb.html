@@ -68,6 +68,27 @@
   
   function produkteHinzufuegen(){
 
+      var produkte = document.querySelectorAll('#produkte li.produkt');
+
+      // Produkte durchlaufen
+      for(var i = 0; i < produkte.length; i++){
+            // Überprüfung ob Produkt selektiert wurde
+          if(produkte[i].style.backgroundColor == 'rgb(160, 160, 160)'){
+            
+              produktname = produkte[i].getElementsByTagName('span')[0].innerHTML;
+
+              // Produkt dem Warenkorb hinzufügen
+              warenkorb.push( Array(produktname, 1) );
+
+              //console.log(produkte[i].getElementsByTagName('span')[0].innerHTML);
+          
+          }
+      
+      }
+
+      //console.log(warenkorb);
+      generiereWarenkorb();
+
   } 
   
   
@@ -76,11 +97,11 @@
   } 
 
 
-  function minusArtikel(){
+  function minusArtikel(artikel){
 
   }
   
-  function deleteArtikel(){
+  function deleteArtikel(artikel){
 
   }
 
@@ -88,12 +109,22 @@
   function generiereWarenkorb(){
     // variable ausgabe deklarieren -> wird innerhalb der for-schleife befüllt
     var ausgabe = '<tr><th>Produkt</th><th>Stück</th><th>Optionen</th></tr>';
-                  
-      zeile = "<tr><td>" + "</td><td>" + "</td><td>"
+
+
+    // alle Produkte die im Warenkorb liegen durchlaufen und der Ausgabe anhängen
+    for(var i = 0; i < warenkorb.length; i++){
+
+      ausgabe += "<tr><td>" + warenkorb[i][0]+ "</td><td>" + warenkorb[i][1] + "</td><td>"
               +'<img src="img/icons/bullet_toggle_plus.png" onclick="plusArtikel(\'' + '\');generiereWarenkorb()" />'
               +'<img src="img/icons/bullet_toggle_minus.png" />'
               +'<img src="img/icons/bullet_delete.png" />'
               + "</td><tr>";
+    
+    }
+                  
+    // ausgabe in den Table
+    document.querySelector('#warenkorb table').innerHTML = ausgabe;
+
 
   }
 
