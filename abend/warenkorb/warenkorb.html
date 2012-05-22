@@ -39,6 +39,17 @@
       
   function onClickProduktListe(){
 
+      var produkte = document.querySelectorAll('#produkte li.produkt');
+
+      //Produkte durchlaufen
+      for(var i = 0; i < produkte.length; i++){
+          // onclick auf produkte
+          produkte[i].onclick= function(){
+              console.log('->click');
+
+          }
+      }
+
   } 
   
 
