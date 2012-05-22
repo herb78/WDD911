@@ -47,6 +47,11 @@
           produkte[i].onclick= function(){
               console.log('->click');
 
+              if(this.style.backgroundColor == 'rgb(160, 160, 160)'){
+                this.style.backgroundColor = 'white';
+              }else{
+                this.style.backgroundColor = 'rgb(160, 160, 160)';
+              }
           }
       }
 
