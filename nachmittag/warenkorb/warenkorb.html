@@ -21,6 +21,7 @@
   </style>
 
   <script type="text/javascript" charset="utf-8">
+
   
   // warenkorb Array() erstellen
   var warenkorb = new Array();
@@ -38,6 +39,27 @@
   */
       
   function onClickProduktListe(){
+
+      // Produkte selektieren
+      var produkte = document.querySelectorAll('#produkte li.produkt');
+      
+      // Elemente durchlaufen
+      for(var i = 0; i < produkte.length; i++){
+        // cursor setzen        
+        produkte[i].style.cursor = 'pointer';
+
+        // onclick auf produkt
+        produkte[i].onclick = function(){
+
+            // hintertrundfarbe auf grau/weiss setzen
+            if(this.style.backgroundColor == 'rgb(160, 160, 160)'){
+                this.style.backgroundColor = 'white';
+            }else{
+                this.style.backgroundColor = 'rgb(160, 160, 160)';
+            }
+        
+        }
+      }
 
   } 
   
