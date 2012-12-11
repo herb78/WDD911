@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style type="text/css">
+        #wrapper {
+            width: 50%;
+            height: 50%;
+            background-color: #ff4500;
+        }
+
+        table {
+            padding: 10px;
+            background-color: fuchsia;
+        }
+
+        tr {
+            padding: 10px;
+            margin: 10px;
+            background-color: #adff2f;
+        }
+
+        td {
+            padding: 20px;
+            background-color: #00bfff;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        var $ = function(selector) {
+            return document.querySelector(selector);
+        }
+
+        window.onload = function() {
+
+            $('body').addEventListener('click', function() {
+                alert('body');
+            }, false);
+
+            $('#wrapper').addEventListener('click', function() {
+                alert('wrapper');
+            }, false);
+
+            $('table').addEventListener('click', function() {
+                alert('table');
+            }, false);
+
+            $('tr').addEventListener('click', function() {
+                alert('tr');
+            }, false);
+
+            $('td').addEventListener('click', function() {
+                alert('td');
+
+            }, false);
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <table>
+            <tr>
+                <td>meine Zelle</td>
+            </tr>
+
+        </table>
+    </div>
+
+</body>
+
+</html>

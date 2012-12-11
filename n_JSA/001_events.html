@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <script type="text/javascript">
+
+        window.onload = function() {
+
+
+            document.querySelector('a').innerHTML = '????';
+
+
+            var ersteClickFunktion = function() {
+
+                this.innerHTML = prompt('neuer linktext');
+
+                this.removeEventListener('click', ersteClickFunktion);
+            };
+
+
+            document.querySelector('a').addEventListener('click', ersteClickFunktion);
+
+            document.querySelector('a').addEventListener('click', function() {
+                alert(this.innerHTML);
+            });
+
+        }
+
+    </script>
+</head>
+
+
+<body>
+
+
+
+<a href="#">Klick mich</a>
+
+</body>
+</html>
