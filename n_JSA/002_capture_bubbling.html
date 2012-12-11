@@ -29,34 +29,37 @@
 
     <script type="text/javascript">
 
-        var $ = function(selector) {
+        var $ = function (selector) {
             return document.querySelector(selector);
-        }
+        };
 
-        window.onload = function() {
+        window.onload = function () {
 
-            $('body').addEventListener('click', function() {
+            $('body').addEventListener('click', function (event) {
                 alert('body');
+                event.stopPropagation();
             }, false);
 
-            $('#wrapper').addEventListener('click', function() {
+            $('#wrapper').addEventListener('click', function () {
                 alert('wrapper');
             }, false);
 
-            $('table').addEventListener('click', function() {
+            $('table').addEventListener('click', function () {
                 alert('table');
             }, false);
 
-            $('tr').addEventListener('click', function() {
+            $('tr').addEventListener('click', function () {
                 alert('tr');
             }, false);
 
-            $('td').addEventListener('click', function() {
+            $('td').addEventListener('click', function (event) {
                 alert('td');
+
+                event.stopPropagation();
 
             }, false);
 
-        }
+        };
 
     </script>
 
