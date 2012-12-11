@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style type="text/css">
+
+        ul {
+            border: 10px solid red;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+
+<ul>
+    <li>test 1</li>
+    <li>test 2</li>
+    <li>test 3</li>
+    <li>test 4</li>
+</ul>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Studenten</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+
+        <tr>
+            <td></td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+        </tr>
+
+
+    </tbody>
+
+</table>
+
+<script type="text/javascript">
+    var div = document.createElement('div');
+
+    div.appendChild(document.createTextNode('mein supertext'));
+
+
+
+    document.querySelector('body').appendChild(div);
+
+
+    var liElement = document.querySelector('li:nth-child(1)');
+
+    liElement.parentNode.removeChild(liElement);
+
+
+    //var parPar = document.querySelector('td').parentNode.parentNode;
+
+
+    console.log(parPar);
+
+
+
+</script>
+</body>
+</html>

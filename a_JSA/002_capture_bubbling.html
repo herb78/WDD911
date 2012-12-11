@@ -38,29 +38,34 @@
         return document.querySelector(selector);
     };
 
-    $('body').addEventListener('click', function () {
+    $('body').addEventListener('click', function (event) {
         alert('body');
-    });
+        event.stopPropagation();
+    }, true);
 
     $('#wrapper').addEventListener('click', function () {
         alert('wrapper');
-    });
+    }, false);
 
     $('table').addEventListener('click', function () {
         alert('table');
-    });
+    }, false);
 
     $('tr').addEventListener('click', function () {
         alert('tr');
-    });
+    }, false);
 
-    $('td').addEventListener('click', function () {
+    $('td').addEventListener('click', function (event) {
         alert('td');
-    });
+
+        event.stopPropagation();
+
+    }, false);
 
 
 
 </script>
+
 
 </body>
 </html>
