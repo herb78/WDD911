@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+
+
+    <style type="text/css">
+        #wrapper {
+            width: 50%;
+            background-color: #b22222;
+        }
+
+        table {
+            width: 50%; padding: 50px;
+            background-color: #00008b;
+        }
+
+        td {
+           background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+
+<div id="wrapper">
+    <table>
+        <tr>
+            <td>Click Mich!</td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script type="text/javascript">
+    var $ = function (selector) {
+        return document.querySelector(selector);
+    };
+
+    $('body').addEventListener('click', function () {
+        alert('body');
+    });
+
+    $('#wrapper').addEventListener('click', function () {
+        alert('wrapper');
+    });
+
+    $('table').addEventListener('click', function () {
+        alert('table');
+    });
+
+    $('tr').addEventListener('click', function () {
+        alert('tr');
+    });
+
+    $('td').addEventListener('click', function () {
+        alert('td');
+    });
+
+
+
+</script>
+
+</body>
+</html>

@@ -2,8 +2,38 @@
 <html>
 <head>
     <title></title>
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+            alert('test');
+
+            //document.querySelector('h1').onclick = function () {
+            //    alert('h1 click im window onload');
+            //};
+
+            var ersterClick = function () {
+                alert('das element wurde 1x geklickt');
+
+                this.removeEventListener('click', ersterClick);
+            };
+
+            document.querySelector('h1').addEventListener('click', ersterClick);
+
+            document.querySelector('h1').addEventListener('click', function () {
+                alert('mein zweiter listener in ECMA');
+            });
+        };
+
+
+
+    </script>
 </head>
 <body>
+
+
+ <h1>Hallo Welt</h1>
+
 
 </body>
 </html>
