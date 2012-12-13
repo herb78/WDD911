@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+
+
+    <style type="text/css">
+
+        .rechteck {
+            position: absolute;
+            left: 50px; top: 50px;
+
+            height: 75px; width: 100px;
+            background-color: #4169e1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="rechteck" style="left:50px;"></div>
+
+
+
+<script type="text/javascript">
+
+
+    var animate = function (element, ziel, callback) {
+
+        var position = parseInt(element.style.left);
+        position = (isNaN(position)) ? 0 : position;
+
+        var animation = setInterval(function () {
+
+            if (position >= ziel) {
+                clearInterval(animation);
+                callback();
+
+            } else {
+                element.style.left =  position + 'px';
+                position += 80;
+            }
+
+
+        }, 200);
+    };
+
+
+    animate(document.querySelector('.rechteck'), 800, function () {
+
+        element.style.backgroundColor = 'red';
+
+    });
+
+
+
+
+
+</script>
+</body>
+</html>
