@@ -34,7 +34,10 @@
 
             if (position >= ziel) {
                 clearInterval(animation);
-                callback();
+
+                callback.call(element, element, ziel);
+
+                //callback(element, ziel)
 
             } else {
                 element.style.left =  position + 'px';
@@ -45,12 +48,16 @@
         }, 200);
     };
 
-
-    animate(document.querySelector('.rechteck'), 800, function () {
+    animate(document.querySelector('.rechteck'), 800, function (element, ziel) {
 
         element.style.backgroundColor = 'red';
+        //console.log(this);
+
+
 
     });
+
+
 
 
 
